@@ -1,26 +1,31 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { createContext, FC } from "react";
+import { Person, HairColor } from "./components/Person";
 
-function App() {
+interface AppContextInterface {
+  name: string;
+  age: number;
+  country: string;
+}
+
+const AppContext = createContext<AppContextInterface | null>(null);
+
+const App: FC = () => {
+  const ContextValue: AppContextInterface = {
+    name: "tanvir",
+    age: 23,
+    country: "bangladesh",
+  };
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Person
+        name="tanvir"
+        age={23}
+        email="tanvir@gmail.com"
+        hairColor={HairColor.Brown}
+      />
     </div>
   );
-}
+};
 
 export default App;
